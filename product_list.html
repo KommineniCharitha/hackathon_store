@@ -1,0 +1,10 @@
+{% for product in products %}
+  <h3>{{ product.name }}</h3>
+  <p>{{ product.description }}</p>
+  <p>${{ product.price }}</p>
+  {% if user.is_authenticated %}
+    <a href="{% url 'add_to_cart' product.id %}">Add to Cart</a>
+  {% else %}
+    <a href="{% url 'login' %}">Login to add to cart</a>
+  {% endif %}
+{% endfor %}
